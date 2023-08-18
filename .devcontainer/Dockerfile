@@ -20,9 +20,17 @@ RUN if [ "${CMAKE_VERSION}" != "none" ]; then \
 RUN apt-get install -y lsb-release wget software-properties-common gnupg
 RUN apt-add-repository 'deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-17 main'
 RUN apt-add-repository 'deb-src http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-17 main'
-
 WORKDIR /root
 RUN wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && ./llvm.sh all
+
+#Up ssh server if not used vscode
+RUN sudo apt-get install -y openssh-server
+RUN sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config
+COPY ./scripts/run.sh .
+RUN chmod +x run.sh
+
+# Install own utility
+#-----------
 
 #make user and set own id
 RUN groupadd -r ${USER_NAME} && useradd -m -s /bin/bash -g ${USER_NAME} ${USER_NAME} -G adm,cdrom,sudo
