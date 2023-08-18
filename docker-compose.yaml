@@ -1,0 +1,14 @@
+#This compose for production
+'version': '3'
+
+#added anothers services
+services:
+  gcc_base:
+    build:
+        context: .
+        args:
+          CMAKE_VERSION: 3.27.2
+    image: gcc_image
+    environment:
+      - TZ=Europe/Moscow
+    command: /bin/sh -c "while sleep 1000; do :; done"
