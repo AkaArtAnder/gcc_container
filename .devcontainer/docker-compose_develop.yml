@@ -15,7 +15,7 @@ services:
       - TZ=Europe/Moscow
 
     volumes:
-      - ./project:/home/user/project:cached
+      - .:/home/user/project:cached
 
     cap_add:
       - SYS_PTRACE
@@ -23,9 +23,9 @@ services:
       - seccomp:unconfined
 
     #Uncomment if used vscode
-    # command: /bin/sh -c "while sleep 1000; do :; done"
+    command: /bin/sh -c "while sleep 1000; do :; done"
     #Uncomment if usued other
-    ports:
-      - "2222:22"
-    command: /root/run.sh
+    # ports:
+    #   - "2222:22"
+    # command: /root/run.sh
  

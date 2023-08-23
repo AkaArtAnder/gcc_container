@@ -12,7 +12,7 @@ RUN if [ "${CMAKE_VERSION}" != "none" ]; then \
     fi \
     && rm -f /tmp/reinstall-cmake.sh
 
-COPY project /root/code
+COPY . /root/code
 
 #install cpp extensions
 # RUN apt-get install -y clangd, lldb
