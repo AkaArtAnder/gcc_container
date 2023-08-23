@@ -10,7 +10,7 @@ ARG DEV_FOLDER
 
 #install cmake required version
 RUN apt-get update && apt-get install -y cmake vim sudo
-COPY ./scripts/reinstall-cmake.sh /tmp/
+COPY .devcontainer/scripts/reinstall-cmake.sh /tmp/
 RUN if [ "${CMAKE_VERSION}" != "none" ]; then \
     chmod +x /tmp/reinstall-cmake.sh && /tmp/reinstall-cmake.sh ${CMAKE_VERSION}; \
     fi \
@@ -26,7 +26,7 @@ RUN wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && ./llvm.sh all
 #Up ssh server if not used vscode
 RUN sudo apt-get install -y openssh-server
 RUN sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config
-COPY ./scripts/run.sh .
+COPY .devcontainer/scripts/run.sh .
 RUN chmod +x run.sh
 
 # Install own utility

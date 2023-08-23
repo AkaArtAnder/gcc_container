@@ -6,7 +6,7 @@ ARG CMAKE_VERSION
 
 #install cmake required version
 RUN apt-get update && apt-get install -y cmake vim
-COPY ./scripts/reinstall-cmake.sh /tmp/
+COPY .devcontainer/scripts/reinstall-cmake.sh /tmp/
 RUN if [ "${CMAKE_VERSION}" != "none" ]; then \
     chmod +x /tmp/reinstall-cmake.sh && /tmp/reinstall-cmake.sh ${CMAKE_VERSION}; \
     fi \
