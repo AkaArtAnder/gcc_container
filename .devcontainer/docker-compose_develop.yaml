@@ -28,4 +28,3 @@ services:
     # ports:
     #   - "2222:22"
     # command: /root/run.sh
- 

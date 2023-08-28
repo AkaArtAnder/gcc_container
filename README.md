@@ -7,11 +7,11 @@
 - Указать в compose параметры пользователя от которого будет произведена разработка **UID, GID, USER_NAME, USER_PASSWORD**, а также директорию для разработки **DEV_FOLDER** она будет создана по пути **/home/USER_NAME/DEV_FOLDER** туда же будет скопирован исходный код приложения. Папка с исходным кодом на компьютере должна иметь идентичное название **DEV_FOLDER** и находиться в корне.
 ### 1. Сборка
 ```bash
-docker-compose -f docker-compose.yaml -f .devcontainer/docker-compose_develop.yml build --no-cache
+docker-compose -f docker-compose.yaml -f .devcontainer/docker-compose_develop.yaml build --no-cache
 ```
 ### 2. Запуск контейнера
 ```bash
- docker-compose -f docker-compose.yaml -f .devcontainer/docker-compose_develop.yml up -d
+ docker-compose -f docker-compose.yaml -f .devcontainer/docker-compose_develop.yaml up -d
 ```
 
 ### 3. Подключение к контейнеру
