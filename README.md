@@ -4,14 +4,14 @@
 ### 0. Подготовка
 - Раскоментировать соответсвующие строки в файле **.devcontainer/docker-compose_develop.yaml**, которые соответсвуют сборке без vscode
 
-- Указать в compose параметры пользователя от которого будет произведена разработка **UID, GID, USER_NAME, USER_PASSWORD**, а также директорию для разработки **DEV_FOLDER** она будет создана по пути **/home/USER_NAME/DEV_FOLDER** туда же будет скопирован исходный код приложения. Папка с исходным кодом на компьютере должна иметь идентичное название **DEV_FOLDER** и находиться в корне.
+- Указать в *.env* параметры пользователя от которого будет произведена разработка **UID, GID, USER_NAME, USER_PASSWORD**, а также директорию для разработки **DEV_FOLDER** она будет создана по пути **/home/USER_NAME/DEV_FOLDER** туда же будет скопирован исходный код приложения (корень).
 ### 1. Сборка
 ```bash
-docker-compose -f docker-compose.yaml -f .devcontainer/docker-compose_develop.yaml build --no-cache
+docker-compose --env-file .env -f docker-compose.yaml -f .devcontainer/docker-compose_develop.yaml build --no-cache
 ```
 ### 2. Запуск контейнера
 ```bash
- docker-compose -f docker-compose.yaml -f .devcontainer/docker-compose_develop.yaml up -d
+ docker-compose --env-file .env -f docker-compose.yaml -f .devcontainer/docker-compose_develop.yaml up -d
 ```
 
 ### 3. Подключение к контейнеру
@@ -27,3 +27,10 @@ ssh -p 2222 user@localhost
 Если пересобрать контейнер, то пара ключей перестанет быть валидной и вы не сможете войти по ssh, для устранения ошибки необходимо на своей машине удалить ключ, находящийся в файле **kwon_hosts (Пример: /home/user/.ssh/known_hosts)**. После этой операции подключение к контейнеру по ssh будет разрешено (сгенерируется новая пара ключей)
 
 # Пока не разобрался как можно перегенерировать на лету без боли СОРИ
+
+## Однако, IDE более умные и сами делают это, поэтому возможно это Вас обойдет. А вообще, пересаживайтесь на VSCODE.
+
+### 4. Проброс git
+Приватный ключ для git должен находиться в *.devcontainer/ssh_keys*. В соответствии к нему в *.env* должна присутствовать переменная с наименованием файла с ключом **SSH_KEY_NAME** и название хоста для соединения **SSH_HOST**.
+
+#### *Если нет необходиомсти прокидывать ключи, то нужно закоментировать соответвующие строки в файле **.devcontainer/Dockerfile***. Строки отмечены как *Set git ssh key into container*
