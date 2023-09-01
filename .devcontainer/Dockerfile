@@ -11,7 +11,7 @@ ARG SSH_HOST
 ARG SSH_KEY_NAME
 
 #install cmake required version
-RUN apt-get update && apt-get install -y cmake vim sudo bash-completion tmux pipx
+RUN apt-get update && apt-get install -y cmake vim sudo bash-completion tmux pipx ninja-build
 COPY .devcontainer/scripts/reinstall-cmake.sh /tmp/
 RUN if [ "${CMAKE_VERSION}" != "none" ]; then \
   chmod +x /tmp/reinstall-cmake.sh && /tmp/reinstall-cmake.sh ${CMAKE_VERSION}; \
@@ -50,14 +50,14 @@ RUN mkdir ${DEV_FOLDER}
 COPY . ${DEV_FOLDER}
 
 # Set git ssh key into container
-WORKDIR /home/${USER_NAME}
-RUN mkdir .ssh
-COPY .devcontainer/ssh_keys/${SSH_KEY_NAME} .ssh/id_ed25519
-USER root
-RUN chmod 777 /home/${USER_NAME}/.ssh && \
-  chmod 777 /home/${USER_NAME}/.ssh/id_ed25519 && \
-  ssh-keyscan -f /home/${USER_NAME}/.ssh/id_ed25519 -t rsa ${SSH_HOST} > /home/${USER_NAME}/.ssh/known_hosts \
-  chmod 777 /home/${USER_NAME}/.ssh/known_hosts
+# WORKDIR /home/${USER_NAME}
+# RUN mkdir .ssh
+# COPY .devcontainer/ssh_keys/${SSH_KEY_NAME} .ssh/id_ed25519
+# USER root
+# RUN chmod 777 /home/${USER_NAME}/.ssh && \
+#   chmod 777 /home/${USER_NAME}/.ssh/id_ed25519 && \
+#   ssh-keyscan -f /home/${USER_NAME}/.ssh/id_ed25519 -t rsa ${SSH_HOST} > /home/${USER_NAME}/.ssh/known_hosts \
+#   chmod 777 /home/${USER_NAME}/.ssh/known_hosts
 # end
 
 USER root

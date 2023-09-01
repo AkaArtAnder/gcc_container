@@ -1,0 +1,47 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "gcc_preset_debug",
+            "displayName": "GCC 13.2.0 debug",
+            "description": "Using compilers: C = /usr/local/bin/gcc, CXX = /usr/local/bin/g++",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "/usr/local/bin/gcc",
+                "CMAKE_CXX_COMPILER": "/usr/local/bin/g++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_MAKE_PROGRAM": "/usr/bin/ninja"
+            }
+        },
+        {
+            "name": "gcc_preset_release",
+            "displayName": "GCC 13.2.0 release",
+            "description": "Using compilers: C = /usr/local/bin/gcc, CXX = /usr/local/bin/g++",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "/usr/local/bin/gcc",
+                "CMAKE_CXX_COMPILER": "/usr/local/bin/g++",
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_MAKE_PROGRAM": "/usr/bin/ninja"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "gcc_build_debug",
+            "description": "preset for debug build",
+            "displayName": "gcc_build_debug",
+            "configurePreset": "gcc_preset_debug"
+        },
+        {
+            "name": "gcc_build_release",
+            "description": "preset for release build",
+            "displayName": "gcc_build_release",
+            "configurePreset": "gcc_preset_release"
+        }
+    ]
+}
