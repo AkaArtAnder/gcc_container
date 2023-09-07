@@ -15,6 +15,9 @@ services:
         # GIT_USER: ${GIT_USER}
         # GIT_EMAIL: ${GIT_EMAIL}
 
+    env_file:
+      - .env
+      - .devcontainer/.env_secret
     volumes:
       - .:/home/${USER_NAME}/${DEV_FOLDER}:cached
     cap_add:
