@@ -2,3 +2,4 @@ build/
 .cache/
 ssh_keys/
 out/
+.devcontainer/.env_secret

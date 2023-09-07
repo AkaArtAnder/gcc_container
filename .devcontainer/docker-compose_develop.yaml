@@ -7,12 +7,13 @@ services:
       args:
         UID: ${UID}
         GID: ${GID}
-        CMAKE_VERSION: 3.27.2
+        CMAKE_VERSION: ${CMAKE_VERSION}
         USER_PASSWORD: ${USER_PASSWORD}
         USER_NAME: ${USER_NAME}
         DEV_FOLDER: ${DEV_FOLDER}
-        SSH_KEY_NAME: ${SSH_KEY_NAME}
-        SSH_HOST: ${SSH_HOST}
+        #Uncomment if unused vscode
+        # GIT_USER: ${GIT_USER}
+        # GIT_EMAIL: ${GIT_EMAIL}
 
     volumes:
       - .:/home/${USER_NAME}/${DEV_FOLDER}:cached
@@ -20,7 +21,6 @@ services:
       - SYS_PTRACE
     security_opt:
       - seccomp:unconfined
-
     #Uncomment if used vscode
     command: /bin/sh -c "while sleep 1000; do :; done"
     #Uncomment if usued other
