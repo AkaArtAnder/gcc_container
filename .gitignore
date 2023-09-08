@@ -3,3 +3,4 @@ build/
 ssh_keys/
 out/
 .devcontainer/.env_secret
+CMakeUserPresets.json
