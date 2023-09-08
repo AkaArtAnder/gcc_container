@@ -3,3 +3,6 @@ build/
 ssh_keys/
 out/
 .devcontainer/.env_secret
+.conan2/
+.conan/
+CMakeUserPresets.json

@@ -13,7 +13,8 @@
                 "CMAKE_CXX_COMPILER": "/usr/local/bin/g++",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_MAKE_PROGRAM": "/usr/bin/ninja"
-            }
+            },
+            "toolchainFile": "${sourceDir}/build/conan_toolchain.cmake"
         },
         {
             "name": "gcc_preset_release",
@@ -21,6 +22,7 @@
             "description": "Using compilers: C = /usr/local/bin/gcc, CXX = /usr/local/bin/g++",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "generator": "Ninja",
+            "toolchainFile": "${sourceDir}/build/conan_toolchain.cmake",
             "cacheVariables": {
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
                 "CMAKE_C_COMPILER": "/usr/local/bin/gcc",

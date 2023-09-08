@@ -43,6 +43,8 @@ USER ${USER_NAME}
 
 #Installing conan
 RUN pipx install conan
+# RUN /home/${USER_NAME}/.local/bin/conan profile detect --force
+# RUN echo "core.cache:storage_path=${CONAN_USER_HOME}" >> /home/${USER_NAME}/.conan2/global.conf
 
 WORKDIR /home/${USER_NAME}
 RUN mkdir ${DEV_FOLDER}

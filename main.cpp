@@ -1,7 +1,3 @@
-#include <cstdlib>
-#include <iostream>
+#include "fmt/core.h"
 
-int main(int, char**) {
-  std::cout << "Hello, from gcc_container!\n";
-  return EXIT_SUCCESS;
-}
+int main(int, char**) { fmt::print("Hello, from gcc_container!\n"); }
