@@ -3,6 +3,7 @@ project(gcc_container VERSION 0.1.0 LANGUAGES C CXX)
 set (CMAKE_CXX_STANDARD 23)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+message(${CMAKE_MODULE_PATH})
 find_package(fmt REQUIRED)
 
 add_executable(${PROJECT_NAME} main.cpp)

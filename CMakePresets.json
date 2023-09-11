@@ -1,5 +1,5 @@
 {
-    "version": 2,
+    "version": 4,
     "configurePresets": [
         {
             "name": "gcc_preset_debug",

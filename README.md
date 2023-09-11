@@ -26,3 +26,8 @@ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -A user@localhos
 ```
 ## Сборка и использование контейнера c vscode
 ### 1. Открыть папку через vscode и выбрать *reopen in container*:)
+
+## Запуск conan
+```bash
+conan install . --profile:host=/home/user/project/.devcontainer/conan_profile.conf --profile:build=/home/user/project/.devcontainer/conan_profile.conf --output-folder=build --build=missing
+```

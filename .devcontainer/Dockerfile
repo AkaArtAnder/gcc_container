@@ -49,7 +49,8 @@ RUN pipx install conan
 WORKDIR /home/${USER_NAME}
 RUN mkdir ${DEV_FOLDER}
 
-COPY . ${DEV_FOLDER}
+COPY --chown=${USER_NAME}:${USER_NAME} . ${DEV_FOLDER}
+# COPY --chown=${USER_NAME}:${USER_NAME} ./.devcontainer/conan_files/global.conf /home/${USER_NAME}/.conan2/
 
 ####Comment if use vscode_devcontainer=====================================================
 # # Create ssh folder
